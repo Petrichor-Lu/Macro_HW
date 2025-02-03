@@ -1,0 +1,182 @@
+# Assignment 1
+
+#### **Instructor: Prof. Eugenio Rojas**
+
+#### Student:    C.H.(Chenhui Lu)
+
+#### UFID:       76982846
+
+===============================================================================
+
+```{r}
+# Empty Environment
+rm(list = ls()) 
+library("data.table")
+library("stargazer")
+library("ggplot2")
+library("tseries")
+library("forecast")
+```
+### **1 Problem 1 (50 points) **
+
+Use the dataset PS1.csv for this question. You may assume that the frequency is annual
+```{r}
+data <- read.csv("/Users/terrylu/Desktop/UF/Courses/2024-2025/2025_Spring/Macro/Problem_Set_1/PS1.csv")
+str(data)
+head(data)
+```
+
+```{r}
+#switch the data to be time series format
+y <- ts(data$y)
+```
+
+#### (i) (10 points) Calculate the first 10 autocorrelations and plot the coefficients you obtain. Is the process weakly stationary?
+Normally, we calculate the autocorrelations following  the quitions:
+```{r}
+knitr::include_graphics("/Users/terrylu/Desktop/UF/Courses/2024-2025/2025_Spring/Macro/Problem_Set_1/Pics/1.1.jpeg")
+```
+Howeverm, R has a convinient package can simply calculate the ACF.
+```{r}
+print("Table 1: The First 10 Autocorrelations:")
+print(acf_values)
+
+acf_values <- acf(y, lag.max = 10, main = "Figure 1 ACF of y (10 Lags)", col = "blue", lwd = 2)  #calculate the autocorelation function (ACF)
+```
+Now we have the Table 1: The First 10 Autocorrelations and Figure 1: ACF of y (10 Lags).
+
+Let follow the definition of Weakly Stationary to check:
+
+1) Its unconditional expectation is constant: E[Yt] = μ for all t. 
+
+
+
+
+
+In addition, we can also use ADF Test(Augmented Dickey-Fuller Test) to test if it exists the unit root to test if it is weakly stationary:
+```{r}
+# ADF Test( Augmented Dickey-Fuller Test)
+adf_test <- adf.test(y)
+print(adf_test)
+```
+Since the P-Value > 5% or even 10%, we cannot reject the hypothesis (it has the unit root), so its not weakly stationary. This test boost our result above. 
+
+```{r}
+
+
+```
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+```{r}
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
